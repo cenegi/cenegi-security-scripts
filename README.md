@@ -12,32 +12,63 @@ These tools streamline reconnaissance, scanning, and documentation tasks commonl
 ## 🔧 Features
 
 - **Easy-to-use command-line interface**
-- Optional `--proxy` flag for routing tools through **proxychains**
+- Supports both **normal** and **proxychains** modes
 - **Colorized output** for readability (blue-themed highlight styles)
-- Modular layout so additional scripts can be added over time
+- Saves all artifacts (scans, banners, web results, screenshots, summary) into a **timestamped results folder**
 - Designed to be readable and easily customized for different engagements
 
 ---
 
 ## 📜 Included Scripts
 
-### 1. **Pentest Automation Script** (`pentest-automation.sh`)
+### 1. Pentest Automation Script – `pentest-automation.sh`
 
 Bash-based automation helper that:
 
-- Prompts whether to use `proxychains` or accepts the `--proxy` flag  
-- Runs a sequence of recon / scanning commands (e.g., host discovery, port scans, service enumeration)  
-- Uses color-coded status messages for clarity  
-- Saves output in a structured way so you can quickly review findings later  
-- Acts as a repeatable baseline workflow for assessments and lab practice
+- Takes a target IP and an optional `--proxy` flag  
+- Runs a sequence of recon / scanning commands (host discovery, port scans, service enumeration)  
+- Collects banners from open ports  
+- Optionally runs:
+  - **Nikto** for web application checks  
+  - **sslscan** for TLS/SSL checks  
+  - **eyewitness** for web UI screenshots  
+- Writes everything into a dedicated results directory for that run
 
 ---
 
 ## ⚙️ Requirements
 
-- Linux system (Kali or similar recommended)
-- Common assessment tools installed (e.g., `nmap`, `proxychains`, etc.)
-- Executable permissions on the script:
+**Required tools:**
 
-```bash
-chmod +x pentest-automation.sh
+- `nmap`
+- `nc` (netcat)
+
+If these are missing, the script will stop and tell you what to install.
+
+**Optional tools (used if present):**
+
+- `nikto` – web vulnerability scanning
+- `sslscan` – SSL/TLS configuration checks
+- `eyewitness` – web screenshot capture
+- `proxychains` – for proxy mode
+
+If optional tools are not installed, the script will simply skip those steps and print a notice.
+
+---
+
+## 📁 Output Structure
+
+Each run creates a separate results folder:
+
+```text
+results_<target>_<timestamp>/
+ ├─ ping_results.txt
+ ├─ nmap_all_ports.txt
+ ├─ nmap_udp_scan.txt
+ ├─ nmap_detailed_scan.txt
+ ├─ nmap_vuln_scan.txt
+ ├─ banners.txt
+ ├─ nikto_results.txt
+ ├─ sslscan_results.txt
+ ├─ eyewitness_output/        # (if eyewitness is installed)
+ └─ summary.txt
