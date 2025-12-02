@@ -33,4 +33,13 @@ Run normally:
 ```bash
 ./pentest-automation.sh
 
+Run with proxychains:
+
+./pentest-automation.sh --proxy
+
+
+Make executable:
+
+chmod +x pentest-automation.sh
+
 
