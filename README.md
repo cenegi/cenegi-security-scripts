@@ -41,5 +41,3 @@ Bash-based automation helper that:
 
 ```bash
 chmod +x pentest-automation.sh
-
-
