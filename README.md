@@ -1,11 +1,36 @@
 # Cenegi Security Scripts
 
-Small collection of security / automation scripts I use in my personal lab environment:
+A collection of penetration‑testing and security‑automation scripts developed by Cenegi.  
+These tools are designed to speed up reconnaissance, scanning, and workflow tasks commonly used in security assessments.
 
-- Recon helpers (wrappers around tools like nmap).
-- Log and evidence collection helpers for investigations.
-- Reporting / note-taking utilities for penetration testing and incident response.
+---
 
-> For lab / educational use only. Always obtain written authorization before testing any environment.
+## 🔧 Features
+
+- Easy-to-use command-line interface  
+- Optional `--proxy` flag for routing tools through **proxychains**  
+- Colorized output for readability (using blue‑themed variants)  
+- Modular design so additional tools can be added over time  
+
+---
+
+## 📜 Included Scripts
+
+### **Pentest Automation Script**
+A bash script that:
+- Asks if you want to use `proxychains` (or accepts `--proxy` flag)
+- Runs recon/scanning commands automatically
+- Outputs color-coded status messages
+- Useful for repeatable assessment workflows
+
+File: `pentest-automation.sh`
+
+---
+
+## 🚀 Usage
+
+Run normally:
+```bash
+./pentest-automation.sh
 
 
