@@ -43,4 +43,3 @@ Bash-based automation helper that:
 chmod +x pentest-automation.sh
 ---
 
-##📌 **Roadmap:** See [ROADMAP.md](./ROADMAP.md) for planned features and status.
