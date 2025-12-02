@@ -9,33 +9,43 @@ This is a living document and will change as the project evolves.
 
 - [x] Create initial repository and README
 - [x] Add `pentest-automation.sh` Bash script
-- [x] Add basic documentation for usage and features
+- [x] Add blue-themed colored output and basic UX messages
+- [x] Support **normal** and **proxychains** modes
+- [x] Add timestamped **results directory** per run (grouping all artifacts)
+- [x] Implement basic tool checks for required binaries (`nmap`, `nc`)
+- [x] Publish repo and link it from resume / GitHub profile
 
 ---
 
-## 🧪 In Progress
+## 🧪 In Progress / Next Up
 
-- [ ] Build initial Python-based automation script that mirrors the Bash workflow
-- [ ] Test scripts in Kali lab with and without `proxychains`
-- [ ] Improve error handling and input validation in scripts
+- [ ] Build initial **Python-based automation script** that mirrors the Bash workflow
+  - [ ] Support `--proxy` style behavior (proxy / non-proxy modes)
+  - [ ] Use the same results directory layout and filenames
+- [ ] Improve error handling and input validation (e.g., bad targets, unreachable host)
+- [ ] Add more graceful handling when optional tools (`nikto`, `sslscan`, `eyewitness`) are missing
+- [ ] Light refactor of the Bash script into reusable functions (scan, web checks, summary generation)
 
 ---
 
 ## 🔮 Planned
 
-- [ ] Add configuration options (e.g., profiles for light / full scans)
-- [ ] Add log / evidence collection helpers for incident response
-- [ ] Add simple report-helper scripts (collect outputs into a single folder, basic markdown report starter)
+- [ ] Add configuration options (profiles for light / full / stealth scans)
+- [ ] Add log / evidence collection helpers for incident response (e.g., grabbing key logs, saving artifacts)
+- [ ] Add simple report-helper scripts (collect outputs into a single folder, generate a basic markdown/text report starter)
 - [ ] Add example usage scenarios (lab walkthroughs, sample commands)
+- [ ] Add unit/integration tests for the Python version where practical
 - [ ] Add CONTRIBUTING guidelines for future collaborators
 
 ---
 
 ## 📝 Notes
 
-This roadmap is intentionally small and focused.  
-The goal is to keep the scripts **practical**, **readable**, and **useful** for:
+Goals for this repo:
 
-- Penetration testing labs  
-- Real-world authorized assessments  
-- Demonstrating scripting and automation skills for security roles
+- Stay **practical** and **readable** — scripts that a working security engineer would actually use.
+- Demonstrate **automation skills** for:
+  - Penetration testing labs  
+  - Real-world authorized assessments  
+  - Incident response and evidence gathering
+- Keep the Bash and Python versions aligned so they feel like two interfaces to the same workflow.
