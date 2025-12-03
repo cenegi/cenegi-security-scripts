@@ -1,90 +1,83 @@
-🛡️ Cenegi Security Scripts
+# 🛡️ Cenegi Security Scripts
 
-A small collection of penetration-testing and security-automation scripts developed by Cenegi.
-These tools streamline reconnaissance, scanning, and documentation tasks commonly used in security assessments and lab work.
+A small collection of penetration-testing and security-automation scripts developed by **Cenegi**.  
+These tools streamline reconnaissance, scanning, and documentation tasks commonly used in security assessments and lab environments.
 
-⚠️ Legal / Ethics
-These scripts are for authorized testing and lab environments only.
-Always obtain written permission from the system owner before running any security tests.
-The Python version includes a one-time permission acknowledgment prompt to confirm authorization before any commands can run.
+> ⚠️ **Legal / Ethics**  
+> These scripts are for **authorized testing only**.  
+> Always obtain written permission from the system owner before running any security tests.  
+> The Python version includes a **permission acknowledgment prompt** to confirm authorization before any commands are executed.
 
-🔧 Features
+---
 
-Easy-to-use command-line interface
+## 🔧 Features
 
-Supports both normal and proxychains modes
+- **Easy-to-use command-line interface**
+- Supports both **normal** and **proxychains** modes  
+- **Colorized output** (blue-themed for consistency with Cenegi branding)
+- Saves scan artifacts, enumerated data, and reports into a **timestamped results directory**
+- Bash and Python versions maintain the same workflow
+- Python version includes **safe placeholders** that must be manually filled in with the real scanning commands before use
 
-Colorized output for readability (blue-themed highlight styles)
+---
 
-Saves all artifacts (scans, banners, web results, screenshots, summary) into a timestamped results folder
+## 📜 Included Scripts
 
-Designed to be readable and easily customized for different engagements
+### 1. `pentest-automation.sh` — Bash Recon Script
 
-Python version includes safe placeholders for commands — must be filled in manually before use
+The Bash script:
 
-📜 Included Scripts
-1. Pentest Automation Script – pentest-automation.sh (Bash)
+- Accepts a target IP and an optional `--proxy` flag  
+- Runs automated recon steps:
+  - Host discovery  
+  - TCP/UDP scanning  
+  - Service enumeration  
+  - Banner grabbing  
+- Optionally integrates:
+  - **Nikto** (web scanning)  
+  - **sslscan** (TLS/SSL checks)  
+  - **eyewitness** (web UI screenshots)
+- Saves all results into a unique directory named after the target and timestamp
 
-Bash-based automation helper that:
+---
 
-Takes a target IP and an optional --proxy flag
+### 2. `pentest_automation.py` — Python Recon Script
 
-Runs a sequence of recon / scanning commands (host discovery, port scans, service enumeration)
+Python-based version that mirrors the Bash workflow:
 
-Collects banners from open ports
+- Includes all major modules: TCP scan, UDP scan, service detection, banner grabbing, optional web checks  
+- Supports both normal and proxy modes  
+- Automatically creates output directories and log files  
+- Adds a **one-time permission acknowledgment** (`.permission_ack`)  
+- Includes **placeholder commands** (commented or printed) where real recon commands should be added  
+  - Prevents accidental scanning without intentional configuration  
+- Safe by default, customizable as needed
 
-Optionally runs:
+---
 
-Nikto for web application checks
+## ⚙️ Requirements
 
-sslscan for TLS/SSL checks
+### Required Tools
+- `nmap`  
+- `nc` (netcat)
 
-eyewitness for web UI screenshots
+### Optional Tools
+Used only if installed:
 
-Writes everything into a dedicated results directory for that run
+- `nikto` — Web vulnerability scanning  
+- `sslscan` — SSL/TLS configuration review  
+- `eyewitness` — Web UI screenshot capture  
+- `proxychains` — Enables proxy mode for routing traffic
 
-2. Pentest Automation Script – pentest_automation.py (Python)
+If optional tools are missing, scripts automatically skip those sections.
 
-Python-based equivalent of the Bash script:
+---
 
-Includes all the same functionality and workflow as the Bash version
+## 📁 Output Structure
 
-One-time permission acknowledgment on first run (stores .permission_ack)
+Each scan creates a timestamped results directory:
 
-Supports both normal and proxychains modes
-
-Creates a results folder with timestamped output
-
-Includes placeholders where real scanning commands should be inserted
-
-These placeholders are commented or printed by default to avoid accidental scans
-
-Colorized output and menu-driven interface for easy selection of modules
-
-⚙️ Requirements
-
-Required tools:
-
-nmap
-
-nc (netcat)
-
-Optional tools (used if present):
-
-nikto – web vulnerability scanning
-
-sslscan – SSL/TLS configuration checks
-
-eyewitness – web screenshot capture
-
-proxychains – for proxy mode
-
-If optional tools are not installed, the scripts skip those steps and print a notice.
-
-📁 Output Structure
-
-Each run creates a separate results folder:
-
+```text
 results_<target>_<timestamp>/
  ├─ ping_results.txt
  ├─ nmap_all_ports.txt
@@ -94,5 +87,5 @@ results_<target>_<timestamp>/
  ├─ banners.txt
  ├─ nikto_results.txt
  ├─ sslscan_results.txt
- ├─ eyewitness_output/        # (if eyewitness is installed)
+ ├─ eyewitness_output/        # if eyewitness is installed
  └─ summary.txt
