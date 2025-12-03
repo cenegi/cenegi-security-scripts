@@ -14,14 +14,14 @@ This is a living document and will change as the project evolves.
 - [x] Add timestamped **results directory** per run (grouping all artifacts)
 - [x] Implement basic tool checks for required binaries (`nmap`, `nc`)
 - [x] Publish repo and link it from resume / GitHub profile
+- [x]  Build initial **Python-based automation script** that mirrors the Bash workflow
+- [x] Support `--proxy` style behavior (proxy / non-proxy modes)
+- [x] Use the same results directory layout and filenames
 
 ---
 
 ## 🧪 In Progress / Next Up
 
-- [ ] Build initial **Python-based automation script** that mirrors the Bash workflow
-  - [ ] Support `--proxy` style behavior (proxy / non-proxy modes)
-  - [ ] Use the same results directory layout and filenames
 - [ ] Improve error handling and input validation (e.g., bad targets, unreachable host)
 - [ ] Add more graceful handling when optional tools (`nikto`, `sslscan`, `eyewitness`) are missing
 - [ ] Light refactor of the Bash script into reusable functions (scan, web checks, summary generation)
