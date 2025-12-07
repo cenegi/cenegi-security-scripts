@@ -121,3 +121,39 @@ results_<target>_<timestamp>/
  ├─ sslscan_results.txt
  ├─ eyewitness_output/        # if installed
  └─ summary.txt
+
+---
+
+### **Forensics Tools Output**
+
+Each file analysis creates a report:
+
+`file_analysis_<filename>_<timestamp>.txt`
+
+**Contents of the report include:**
+
+- **Metadata** (size, timestamps, permissions)  
+- **Hashes** (MD5, SHA1, SHA256)  
+- **Strings & Suspicious Indicators**  
+- **Hex Dump** (first 256 bytes)  
+- **Entropy Score**  
+- **Module-by-module status**  
+  - e.g., COMPLETED, NONE FOUND, SUSPICIOUS FOUND  
+- **Final Risk Summary**  
+  - Indicates whether the file shows potentially malicious behavior  
+
+---
+
+## 🚀 Future Additions
+
+This repository is part of a larger learning and development project.  
+Planned enhancements include:
+
+- Directory-wide forensics automation  
+- YARA rule scanning  
+- Malware signature correlation  
+- PDF/Office macro extraction  
+- PE/ELF deep analysis tools  
+- Recon automation enhancements  
+- Web enumeration modules  
+- Windows-focused security utilities
